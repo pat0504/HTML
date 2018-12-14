@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>calculator</title>
+		<style>
+			.bigWrapper{
+				display: grid;
+				background-color: blue;
+				grid-template-columns: auto auto;
+				padding: 15px;
+				position: relative;
+				margin: 10px;
+				height: 300px;
+				width: 500px;
+			}
+			.gridWrapper{
+				display: grid;
+				top: 8px;
+				left: 5px;
+				grid-template-columns: auto auto auto;
+				width: 350px;
+				border-style: solid;
+				border-width: 2px;
+				background-color: #2196F3;
+				position: absolute;
+			}
+			.gridItem{
+				background-color: red;
+				width: 75px;
+				text-align: center;
+				margin: 10px;
+				padding: 10px;
+			}
+			.gridOpItem{
+				background-color: red;
+				width: 75px;
+				text-align: center;
+				margin: 12px;
+				padding: 10px;
+			}
+			.gridOperator{
+				display: grid;
+				grid-template-columns: auto;
+				width:125px;
+				top: 8px;
+				right: 5px;
+				border-style: solid;
+				background-color: #2196F3;
+				border-width: 2px;
+				position: absolute;
+				float: right;
+			}
+		</style>
+		
+		<script type="text/javaScript">
+			function addNumb(numb){
+					alert(numb);
+					var operatorValue = document.getElementById("operator").innerHTML
+					if(operatorValue == '?'){
+						var prevValue = document.getElementById("firstNumb").innerHTML;
+						numb = (prevValue * 10) + numb;
+						document.getElementById("firstNumb").innerHTML = numb;
+					}else{
+						var secondValue = document.getElementById("secondNumb").innerHTML;
+						numb = (secondValue * 10) + numb;
+						alert(numb)
+						document.getElementById("secondNumb").innerHTML = numb;
+					}
+				}
+			function inputOperator(Op){
+					document.getElementById("operator").innerHTML = Op;
+			}
+			function clearEntry(){
+				document.getElementById("operator").innerHTML = '?';
+				document.getElementById("answer").innerHTML = 'ans'
+				document.getElementById("firstNumb").innerHTML = '0'
+				document.getElementById("secondNumb").innerHTML = '0'	
+			}
+			function calculate(){
+				alert("Calculate")
+				var result = 0;
+				var a = Number(document.getElementById("firstNumb").innerHTML);
+				var b = Number(document.getElementById("secondNumb").innerHTML);
+				var z = document.getElementById("operator").innerHTML;
+				if(z == '+'){
+						result = a + b;
+				}
+				if(z == '-'){
+						result = a - b;
+				}
+				if(z == '*'){
+						result = a * b;
+				}
+				if(z == '/'){
+						result = a / b;
+				}
+				document.getElementById("answer").innerHTML = result;
+			}
+			// what javaScript will you need?
+			// create the shell of each function
+			// put an alert in each function to demonstrate that you are calling it
+		</script>
+	</head>
+	<body>
+	calculator beginner code
+	<h1>Grid Calc Elements</h1>
+	<br>
+	<div id ="firstNumb" class="number">0</div>
+	<br>
+	<div id ="operator" class="Operator">?</div>
+	<br>
+	<div id ="secondNumb" class="number">0</div>
+	<br>
+	<div id ="answer" class="number">ans</div>
+	<br>
+		<div class="bigWrapper">
+			<div class="gridWrapper">
+				<div class="gridItem" onclick="addNumb(1)">1</div>
+				<div class="gridItem" onclick="addNumb(2)">2</div>
+				<div class="gridItem" onclick="addNumb(3)">3</div>
+				<div class="gridItem" onclick="addNumb(4)">4</div>
+				<div class="gridItem" onclick="addNumb(5)">5</div>
+				<div class="gridItem" onclick="addNumb(6)">6</div>
+				<div class="gridItem" onclick="addNumb(7)">7</div>
+				<div class="gridItem" onclick="addNumb(8)">8</div>
+				<div class="gridItem" onclick="addNumb(9)">9</div>
+				<div class="gridItem">&nbsp;</div>
+				<div class="gridItem" onclick="addNumb(0)">0</div>
+				<div class="gridItem" onclick="clearEntry()">c</div>
+			</div>
+			<div class="gridOperator">
+				<div class="gridOpItem" onclick="inputOperator('+')">+</div>
+				<div class="gridOpItem" onclick="inputOperator('-')">-</div>
+				<div class="gridOpItem" onclick="inputOperator('*')">*</div>
+				<div class="gridOpItem" onclick="inputOperator('/')">/</div>
+				<div class="gridOpItem" onclick="calculate()">=</div>
+	</body>
+</html> 
